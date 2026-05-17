@@ -1,0 +1,129 @@
+/* ============================================================
+   Portfolio Arthur CALON — Feuille de style globale (accueil)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:        #0f0f0f;
+  --surface:   #1a1a1a;
+  --border:    #2e2e2e;
+  --accent:    #c8f060;
+  --accent2:   #60c8f0;
+  --text:      #e8e8e0;
+  --muted:     #7a7a72;
+  --radius:    12px;
+  --max-w:     860px;
+  --font-disp: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --ease:      cubic-bezier(.22,1,.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 5vw, 2.5rem);
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp .6s var(--ease) both;
+}
+
+.logo-img {
+  width: clamp(52px, 10vw, 72px);
+  height: clamp(52px, 10vw, 72px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.site-header h1 {
+  font-family: var(--font-disp);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.site-header h1 span { color: var(--accent); }
+
+.section-label {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Cards */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.nav-card {
+  display: block;
+  padding: 1.5rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color .25s, transform .25s var(--ease), background .25s;
+  animation: fadeUp .6s var(--ease) both;
+}
+.nav-card:nth-child(1) { animation-delay: .1s; }
+.nav-card:nth-child(2) { animation-delay: .2s; }
+.nav-card:nth-child(3) { animation-delay: .3s; }
+.nav-card:hover { border-color: var(--accent); background: #212121; transform: translateY(-3px); }
+
+.card-icon { font-size: 1.6rem; margin-bottom: .75rem; display: block; }
+.card-title { font-family: var(--font-disp); font-size: 1.2rem; font-weight: 400; display: block; margin-bottom: .3rem; }
+.card-desc { font-size: .875rem; color: var(--muted); }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem clamp(1rem, 5vw, 2rem);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .8rem;
+  letter-spacing: .04em;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: .75rem; margin-bottom: 2.5rem; }
+  .nav-grid { grid-template-columns: 1fr; }
+}
